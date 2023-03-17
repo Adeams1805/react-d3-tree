@@ -25,7 +25,7 @@
     "build:docs": "rimraf ./docs && typedoc",
     "build:cjs": "tsc -p tsconfig.json",
     "build:esm": "tsc -p tsconfig.esm.json",
-    "build": "rimraf lib && npm run build:cjs && npm run build:esm",
+    "build": "rm -rf lib && yarn run build:cjs && yarn run build:esm",
     "build:watch": "rimraf lib && npm run build:esm -- -w",
     "lint": "eslint src/**/*.js",
     "test": "jest --config jest.config.json --coverage --verbose",
@@ -35,7 +35,7 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "show:cov": "open coverage/lcov-report/index.html",
     "show:docs": "open demo/public/docs/index.html",
-    "prepublishOnly": "npm run test && npm run build",
+    "prepare": "yarn run test && yarn run build",
     "deploy:demo": "npm run build && npm run build:docs && cd demo && npm run build && npm run deploy"
   },
   "repository": {
